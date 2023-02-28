@@ -24,17 +24,17 @@ namespace MatchGame
         DispatcherTimer timer = new DispatcherTimer();
         int tenthsOfSecondsElapsed;
         int matchesFound;
+
         public MainWindow()
         {
             InitializeComponent();
 
             timer.Interval = TimeSpan.FromSeconds(.1);
             timer.Tick += Timer_Tick;
-
             SetUpGame();
         }
 
-        private void Timer_Tick(object? sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
             tenthsOfSecondsElapsed++;
             timeTextBlock.Text =  (tenthsOfSecondsElapsed / 10F).ToString("0.0s");
@@ -65,6 +65,7 @@ namespace MatchGame
             {
                 if (textBlock.Name != "timeTextBlock")
                 {
+                    textBlock.Visibility = Visibility.Visible;
                     int index = random.Next(animalEmoji.Count);
                     string nextEmoji = animalEmoji[index];
                     textBlock.Text = nextEmoji;
